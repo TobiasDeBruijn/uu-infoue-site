@@ -1,0 +1,50 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 80ch;
+    margin: auto;
+    padding: 2rem;
+    font-family: Verdana, Arial, sans-serif;
+    color: #222;
+}
+
+body.thanks {
+    background-color: silver;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-flow: column;
+    gap: .25rem;
+    align-items: center;
+}
+
+input[type="submit"] {
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+}
+
+.submitBtn {
+    margin-top: 2rem;
+    padding: 1rem;
+    width: fit-content;
+}
+
+.countdown {
+    position: sticky;
+    top: 0;
+    padding: 10px 16px 5px 16px;
+    background-color: white;
+    text-align: center;
+}
+
+.countdown > h1 {
+    padding: 0;
+}

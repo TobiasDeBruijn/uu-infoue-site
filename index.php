@@ -1,3 +1,13 @@
+<?php
+
+$fir = new FilesystemIterator("output/", FilesystemIterator::SKIP_DOTS);
+$outputCount = iterator_count($fir);
+
+$isVariantA = $outputCount % 2 == 0;
+$variantName = $isVariantA ? "A" : "B";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +17,13 @@
 
     <link type="text/css" href="style.css" rel="stylesheet"/>
     <link rel="icon" href="https://www.uu.nl/themes/custom/corp/favicon.ico" type="">
+
+    <!-- Include the tracker -->
+    <?php if($isVariantA): ?>
+    <script src="variant_a.js" type="application/javascript"></script>
+    <?php else: ?>
+    <script src="variant_b.js" type="application/javascript"></script>
+    <?php endif ?>
 </head>
 <body>
 <section>
@@ -60,6 +77,8 @@
 </section>
 
 <form method="post" action="article.php">
+    <input type="hidden" name="variantName" value="<?php echo $variantName ?>"
+
     <label for="name">Naam / Name</label>
     <input type="text" name="name" required id="name"/>
 

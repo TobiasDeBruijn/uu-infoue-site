@@ -1,11 +1,9 @@
 <?php
 $name = $_POST['name'];
 $startTime = date("Y-m-d H:i:s");
+$variantName = $_POST['variantName'];
 
-$fir = new FilesystemIterator("output/", FilesystemIterator::SKIP_DOTS);
-$outputCount = iterator_count($fir);
-
-$isVariantA = $outputCount % 2 == 0;
+$isVariantA = strcmp($variantName, "A") === 0;
 
 ?>
 
@@ -18,6 +16,13 @@ $isVariantA = $outputCount % 2 == 0;
 
     <link type="text/css" href="style.css" rel="stylesheet"/>
     <link rel="icon" href="https://www.uu.nl/themes/custom/corp/favicon.ico" type="">
+
+    <!-- Include the tracker -->
+    <?php if($isVariantA): ?>
+        <script src="variant_a.js" type="application/javascript"></script>
+    <?php else: ?>
+        <script src="variant_b.js" type="application/javascript"></script>
+    <?php endif ?>
 </head>
 <body>
     <?php if($isVariantA): ?>
@@ -67,7 +72,7 @@ $isVariantA = $outputCount % 2 == 0;
     <form method="post" action="questions.php">
         <input type="hidden" name="name" value="<?php echo $name ?>">
         <input type="hidden" name="startTime" value="<?php echo $startTime ?>">
-        <input type="hidden" name="variantName" value="<?php echo $isVariantA ? 'A' : 'B' ?>">
+        <input type="hidden" name="variantName" value="<?php echo $variantName ?>">
 
         <button type="submit" name="Submit" class="submitBtn">Klaar / Done</button>
     </form>

@@ -2,6 +2,7 @@
 $name = $_POST['name'];
 $startTime = $_POST['startTime'];
 $variantName = $_POST['variantName'];
+$isVariantA = strcmp($variantName, "A") === 0;
 
 $readEndTime = date("Y-m-d H:i:s");
 ?>
@@ -15,6 +16,13 @@ $readEndTime = date("Y-m-d H:i:s");
 
     <link type="text/css" href="style.css" rel="stylesheet"/>
     <link rel="icon" href="https://www.uu.nl/themes/custom/corp/favicon.ico" type="">
+
+    <!-- Include the tracker -->
+    <?php if($isVariantA): ?>
+        <script src="variant_a.js" type="application/javascript"></script>
+    <?php else: ?>
+        <script src="variant_b.js" type="application/javascript"></script>
+    <?php endif ?>
 </head>
 <body>
     <section>
